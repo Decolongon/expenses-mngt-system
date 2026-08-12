@@ -16,7 +16,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
     }
 
     /**
@@ -61,4 +60,6 @@ class AppServiceProvider extends ServiceProvider
         DevCommands::except('queue');
         DevCommands::artisan('serve', 'Serve the application')->green();
     }
+
+   
 }
