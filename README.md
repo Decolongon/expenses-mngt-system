@@ -22,7 +22,7 @@ This separation keeps business logic decoupled from data access, making the code
 
 ## Database
 
-The application uses **ULIDs as primary keys** throughout the database. All tables (`users`, `passkeys`, `categories`, `budgets`, `expenses`, and their foreign-key columns such as `author_id`, `category_id`, and `user_id`) use `char(26)` ULID identifiers instead of auto-incrementing integers.
+The application uses **ULIDs as primary keys** throughout the database.
 
 ## Official Documentation
 
