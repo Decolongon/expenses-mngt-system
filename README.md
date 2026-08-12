@@ -1,16 +1,32 @@
-# Laravel + Vue Starter Kit
+# Expenses Management System
 
 ## Introduction
 
-Our Vue starter kit provides a robust, modern starting point for building Laravel applications with a Vue frontend using [Inertia](https://inertiajs.com).
+An ongoing expense management application built with Laravel and a Vue frontend using [Inertia](https://inertiajs.com), Vue 3 (Composition API), TypeScript, Tailwind, and the [shadcn-vue](https://www.shadcn-vue.com) component library.
 
-Inertia allows you to build modern, single-page Vue applications using classic server-side routing and controllers. This lets you enjoy the frontend power of Vue combined with the incredible backend productivity of Laravel and lightning-fast Vite compilation.
+## Project Status
 
-This Vue starter kit utilizes Vue 3 and the Composition API, TypeScript, Tailwind, and the [shadcn-vue](https://www.shadcn-vue.com) component library.
+This project is **still ongoing / in active development**. Features and structure are continuously being added and refined.
+
+## Architecture
+
+The backend follows the **Service and Repository pattern**:
+
+- **Controllers** — handle incoming HTTP requests and return responses.
+- **Services** (`app/Services`) — business logic layer.
+- **Repositories** (`app/Repositories`) — data access layer that interacts with Eloquent models.
+- **Interfaces** (`app/Interfaces`) — contracts that define what each repository must implement.
+- **RepositoryProvider** (`app/Providers/RepositoryProvider.php`) — binds each interface to its concrete repository implementation, so the application resolves the correct repository through dependency injection.
+
+This separation keeps business logic decoupled from data access, making the codebase easier to test and maintain.
+
+## Database
+
+The application uses **ULIDs as primary keys** throughout the database. All tables (`users`, `passkeys`, `categories`, `budgets`, `expenses`, and their foreign-key columns such as `author_id`, `category_id`, and `user_id`) use `char(26)` ULID identifiers instead of auto-incrementing integers.
 
 ## Official Documentation
 
-Documentation for all Laravel starter kits can be found on the [Laravel website](https://laravel.com/docs/starter-kits).
+Documentation for the underlying Laravel starter kits can be found on the [Laravel website](https://laravel.com/docs/starter-kits).
 
 ## Contributing
 
