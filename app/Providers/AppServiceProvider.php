@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Carbon\CarbonImmutable;
+use Illuminate\Foundation\DevCommands;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
@@ -24,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->configureDefaults();
+        $this->configDevCommand();
     }
 
     /**
@@ -46,5 +48,17 @@ class AppServiceProvider extends ServiceProvider
                 ->uncompromised()
             : null,
         );
+    }
+
+    protected function configDevCommand(): void
+    {
+        DevCommands::artisan('optimize:clear', 'Clear caches')->yellow();
+
+        DevCommands::artisan('optimize', 'Optimize')->blue();
+
+        DevCommands::node('build', 'Build assets')->purple();
+
+        DevCommands::except('queue');
+        DevCommands::artisan('serve', 'Serve the application')->green();
     }
 }
