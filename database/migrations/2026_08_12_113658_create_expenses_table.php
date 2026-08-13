@@ -15,15 +15,15 @@ return new class extends Migration
     {
         Schema::create('expenses', function (Blueprint $table) {
             $table->ulid('id')->primary();
-            $table->foreignUlidFor(Category::class,'category_id')->nullable()->constrained()->nullOnDelete();
-            $table->foreignUlidFor(User::class,'author_id')->constrained()->cascadeOnDelete();
+            $table->foreignUlidFor(Category::class, 'category_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignUlidFor(User::class, 'author_id')->constrained()->cascadeOnDelete();
             $table->decimal('amount', 10, 2);
             $table->string('title');
             $table->text('description')->nullable();
             $table->date('date');
             $table->enum('type', ['one-time', 'recurring'])->default('one-time');
 
-            //recurring fields
+            // recurring fields
             $table->enum('recurring_interval', ['daily', 'weekly', 'monthly', 'yearly'])->nullable();
             $table->date('recurring_start_date')->nullable();
             $table->date('recurring_end_date')->nullable();

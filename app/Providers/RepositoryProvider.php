@@ -27,6 +27,7 @@ class RepositoryProvider extends ServiceProvider
     {
         //
     }
+
     protected function bindInterfaces()
     {
         $this->app->bind(

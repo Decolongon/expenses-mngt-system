@@ -8,14 +8,15 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function __construct(private CategoryInterface $categoryRepository){}
+    public function __construct(private CategoryInterface $categoryRepository) {}
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $categories = $this->categoryRepository->getAllCategories();
-      
+
     }
 
     /**

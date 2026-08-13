@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('budgets', function (Blueprint $table) {
             $table->ulid('id')->primary();
-            $table->foreignUlidFor(Category::class,'category_id')->nullable()->constrained()->nullOnDelete();
-            $table->foreignUlidFor(User::class,'author_id')->constrained()->cascadeOnDelete();
+            $table->foreignUlidFor(Category::class, 'category_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignUlidFor(User::class, 'author_id')->constrained()->cascadeOnDelete();
             $table->decimal('amount', 10, 2);
             $table->integer('month');
             $table->integer('year');

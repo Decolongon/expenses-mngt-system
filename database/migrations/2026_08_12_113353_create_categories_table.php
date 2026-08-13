@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->ulid('id')->primary();
-            $table->foreignUlidFor(User::class,'author_id')->constrained()->cascadeOnDelete();
+            $table->foreignUlidFor(User::class, 'author_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->string('color')->nullable();
             $table->string('icon')->nullable();
