@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-#[Fillable('name', 'color', 'icon')]
+#[Fillable('name', 'color', 'icon', 'author_id')]
 #[Table(key: 'id', keyType: 'string', incrementing: false)]
 class Category extends Model
 {

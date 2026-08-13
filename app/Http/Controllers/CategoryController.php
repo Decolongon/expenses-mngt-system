@@ -9,6 +9,7 @@ use App\Http\Requests\Category\UpdateCategoryRequest;
 use App\Interfaces\CategoryInterface;
 use App\Models\Category;
 use App\Services\CategoryService;
+use Inertia\Inertia;
 
 class CategoryController extends Controller
 {
@@ -21,6 +22,9 @@ class CategoryController extends Controller
     {
         $categories = $this->categoryRepository->getAllCategories();
 
+        return Inertia::render('category/category-index', [
+            'categories' => $categories,
+        ]);
     }
 
     /**
@@ -28,8 +32,10 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $colors = CategoryColorEnum::options();
-        $icons = CategoryIconEnum::options();
+        return Inertia::render('category/category-create', [
+            'colors' => CategoryColorEnum::options(),
+            'icons' => CategoryIconEnum::options()
+        ]);
     }
 
     /**
