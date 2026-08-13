@@ -15,4 +15,15 @@ class CategoryRepository implements CategoryInterface
             ->where('author_id', Auth::id())
             ->get();
     }
+
+    public function createCategory(array $data): Category
+    {
+        return Category::create($data);
+    }
+
+    public function updateCategory(Category $category, array $data): Category
+    {
+        $category->update($data);
+        return $category;
+    }
 }
