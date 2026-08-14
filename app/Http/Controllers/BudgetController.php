@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Budget\CreateBudgetRequest;
+use App\Http\Requests\Budget\UpdateBudgetRequest;
 use App\Models\Budget;
-use Illuminate\Http\Request;
+use App\Services\BudgetService;
 
 class BudgetController extends Controller
 {
+    public function __construct(private BudgetService $budgetService){}
     /**
      * Display a listing of the resource.
      */
@@ -26,7 +29,7 @@ class BudgetController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateBudgetRequest $request)
     {
         //
     }
@@ -50,7 +53,7 @@ class BudgetController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Budget $budget)
+    public function update(UpdateBudgetRequest $request, Budget $budget)
     {
         //
     }
