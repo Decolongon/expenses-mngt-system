@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\DevCommands;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
@@ -23,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->configureDefaults();
         $this->configDevCommand();
+        $this->unknownOnFailConfig();
     }
 
     /**
@@ -57,5 +59,10 @@ class AppServiceProvider extends ServiceProvider
 
         DevCommands::except('queue');
         DevCommands::artisan('serve', 'Serve the application')->green();
+    }
+
+    protected function unknownOnFailConfig(): void
+    {
+        FormRequest::failOnUnknownFields();
     }
 }
