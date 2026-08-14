@@ -2,28 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Concerns\HasFlashMessage;
 use App\Enums\CategoryColorEnum;
 use App\Enums\CategoryIconEnum;
 use App\Http\Requests\Category\CreateCategoryRequest;
 use App\Http\Requests\Category\UpdateCategoryRequest;
-use App\Interfaces\CategoryInterface;
 use App\Models\Category;
 use App\Services\CategoryService;
 use Inertia\Inertia;
 
 class CategoryController extends Controller
 {
-    public function __construct(private CategoryInterface $categoryRepository, private CategoryService $categoryService) {}
+    use HasFlashMessage;
+
+    public function __construct(private CategoryService $categoryService) {}
 
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $categories = $this->categoryRepository->getAllCategories();
-
         return Inertia::render('category/category-index', [
-            'categories' => $categories,
+            'categories' => $this->categoryService->getCategories(),
         ]);
     }
 
@@ -34,7 +34,7 @@ class CategoryController extends Controller
     {
         return Inertia::render('category/category-create', [
             'colors' => CategoryColorEnum::options(),
-            'icons' => CategoryIconEnum::options()
+            'icons' => CategoryIconEnum::options(),
         ]);
     }
 
@@ -44,6 +44,8 @@ class CategoryController extends Controller
     public function store(CreateCategoryRequest $request)
     {
         $this->categoryService->createCategory($request->validated());
+        $this->successMessage('Category created successfully.');
+        return to_route('categories.index');
     }
 
     /**
@@ -59,7 +61,11 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return Inertia::render('category/category-edit', [
+            'category' => $category,
+            'colors' => CategoryColorEnum::options(),
+            'icons' => CategoryIconEnum::options(),
+        ]);
     }
 
     /**
@@ -68,6 +74,8 @@ class CategoryController extends Controller
     public function update(UpdateCategoryRequest $request, Category $category)
     {
         $this->categoryService->updateCategory($category, $request->validated());
+        $this->successMessage('Category updated successfully.');
+        return to_route('categories.index');
     }
 
     /**
@@ -76,8 +84,12 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         if ($category->expenses->isNotEmpty()) {
+            $this->errorMessage('Cannot delete category that has expenses.');
             return;
         }
+        $this->successMessage('Category deleted successfully.');
         $category->delete();
+
+        return to_route('categories.index');
     }
 }

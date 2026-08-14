@@ -2,7 +2,7 @@
 import { Head, Form } from '@inertiajs/vue3';
 import { Check, icons as lucideIcons } from '@lucide/vue';
 import { computed, ref } from 'vue';
-import { store, create } from "@/actions/App/Http/Controllers/CategoryController";
+import { index, update } from "@/actions/App/Http/Controllers/CategoryController";
 import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -13,21 +13,27 @@ defineOptions({
     layout: {
         breadcrumbs: [
             {
-                title: 'Create category',
-                href: create(),
+                title: 'Update category',
+                href: index(),
             },
         ],
     },
 });
 
 const props = defineProps<{
+    category: {
+        id: string;
+        name: string;
+        color: string | null;
+        icon: string | null;
+    };
     colors: Array<{ value: string; label: string }>;
     icons: Array<{ value: string; label: string }>;
 }>();
 
-const categoryName = ref<string>('');
-const selectedColor = ref<string>('');
-const selectedIcon = ref<string>('');
+const categoryName = ref<string>(props.category.name);
+const selectedColor = ref<string>(props.category.color ?? '');
+const selectedIcon = ref<string>(props.category.icon ?? '');
 
 const selectedIconComponent = computed(() =>
     selectedIcon.value
@@ -74,11 +80,11 @@ function previewAccent(): string {
 
 <template>
 
-    <Head title="Create category" />
+    <Head title="Edit category" />
 
-    <Form :action="store()" #default="{
+    <Form :action="update(category)" #default="{
         errors,
-    }" resetOnSuccess>
+    }">
 
         <div class="grid gap-6">
             <Card>
@@ -226,7 +232,7 @@ function previewAccent(): string {
 
             <div class="flex flex-col gap-2 sm:flex-row sm:justify-end">
                 <Button type="submit" class="w-full sm:w-auto">
-                    Create Category
+                    Update Category
                 </Button>
             </div>
         </div>

@@ -18,6 +18,7 @@ class CategoryRepository implements CategoryInterface
 
     public function createCategory(array $data): Category
     {
+        $data['author_id'] = Auth::id();
         return Category::create($data);
     }
 

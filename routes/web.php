@@ -10,7 +10,7 @@ Route::inertia('/', 'Welcome')->name('home');
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'Dashboard')->name('dashboard');
 
-    Route::resource('categories', CategoryController::class);
+    Route::resource('categories', CategoryController::class)->except('show');
     Route::resource('expenses', ExpensesController::class);
     Route::resource('budgets', BudgetController::class);
 });
