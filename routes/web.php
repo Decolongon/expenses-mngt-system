@@ -12,7 +12,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('categories', CategoryController::class)->except('show');
     Route::resource('expenses', ExpensesController::class);
-    Route::resource('budgets', BudgetController::class);
+    Route::resource('budgets', BudgetController::class)->except('show');
 });
 
 require __DIR__.'/settings.php';

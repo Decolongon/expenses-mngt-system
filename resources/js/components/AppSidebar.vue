@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
-import { BookOpen, FolderGit2, LayoutGrid, List } from '@lucide/vue';
+import { BookOpen, FolderGit2, LayoutGrid, List, Banknote } from '@lucide/vue';
 import AppLogo from '@/components/AppLogo.vue';
 import NavFooter from '@/components/NavFooter.vue';
 import NavMain from '@/components/NavMain.vue';
@@ -17,6 +17,7 @@ import {
 import { dashboard } from '@/routes';
 import type { NavItem } from '@/types';
 import { index } from "@/actions/App/Http/Controllers/CategoryController";
+import BudgetController from "@/actions/App/Http/Controllers/BudgetController";
 
 const mainNavItems: NavItem[] = [
     {
@@ -28,6 +29,11 @@ const mainNavItems: NavItem[] = [
         title: 'Categories',
         href: index(),
         icon: List,
+    },
+      {
+        title: 'Budget',
+        href: BudgetController.index(),
+        icon: Banknote,
     },
 ];
 

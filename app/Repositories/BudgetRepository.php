@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Interfaces\BudgetInterface;
 use App\Models\Budget;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 
 class BudgetRepository implements BudgetInterface
@@ -19,5 +20,13 @@ class BudgetRepository implements BudgetInterface
     {
         $budget->update($data);
         return $budget;
+    }
+
+    public function getBudget(): Collection
+    {
+       return Budget::query()
+       ->with(['author:id,name', 'category:id,name,color,icon'])
+       ->where('author_id', Auth::id())
+       ->get();
     }
 }

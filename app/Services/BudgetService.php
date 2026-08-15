@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Interfaces\BudgetInterface;
 use App\Models\Budget;
+use Illuminate\Database\Eloquent\Collection;
 
 class BudgetService
 {
@@ -20,5 +21,9 @@ class BudgetService
     public function updateBudget(Budget $budget, array $data): Budget
     {
         return $this->budgetRepository->updateBudget($budget, $data);
+    }
+    public function getBudget(): Collection
+    {
+        return $this->budgetRepository->getBudget();
     }
 }
