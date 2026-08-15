@@ -12,6 +12,7 @@ class CategoryRepository implements CategoryInterface
     public function getAllCategories(): Collection
     {
         return Category::query()
+            ->with('author:id,name')
             ->where('author_id', Auth::id())
             ->get();
     }

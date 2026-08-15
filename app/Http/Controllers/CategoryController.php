@@ -83,8 +83,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        if ($category->expenses->isNotEmpty()) {
-            $this->errorMessage('Cannot delete category that has expenses.');
+        if ($category->expenses->isNotEmpty() || $category->budgets->isNotEmpty()) {
+            $this->errorMessage('Cannot delete category that has expenses or budgets.');
             return;
         }
         $this->successMessage('Category deleted successfully.');
