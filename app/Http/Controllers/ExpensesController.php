@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Expense;
+use App\Services\ExpensesService;
 use Illuminate\Http\Request;
 
 class ExpensesController extends Controller
 {
+
+    public function __construct(private ExpensesService $expensesService){}
     /**
      * Display a listing of the resource.
      */
