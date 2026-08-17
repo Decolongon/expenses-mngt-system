@@ -60,7 +60,7 @@ class BudgetController extends Controller
     public function edit(Budget $budget)
     {
         abort_if($budget->author_id !== Auth::id(), 403, 'You are not authorized to edit this budget.');
-        $budget->load(['category:id,name' , 'author:id,name']);
+        $budget->load(['category:id,name']);
         return Inertia::render('budget/budget-edit', [
             'budget' => $budget,
             'categories' => $this->categoryService->getCategories(),
