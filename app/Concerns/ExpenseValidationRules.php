@@ -11,6 +11,12 @@ trait ExpenseValidationRules
     protected function expenseRules(): array
     {
         return [
+            'title' => [
+                'required',
+                'string',
+                'max:100',
+                'min:3'
+            ],
             'category_id' => [
                 'required',
                 'exists:categories,id',
