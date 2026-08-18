@@ -4,9 +4,11 @@ namespace App\Providers;
 
 use App\Interfaces\BudgetInterface;
 use App\Interfaces\CategoryInterface;
+use App\Interfaces\DashboardInterface;
 use App\Interfaces\ExpensesInterface;
 use App\Repositories\BudgetRepository;
 use App\Repositories\CategoryRepository;
+use App\Repositories\DashboardRepository;
 use App\Repositories\ExpensesRepository;
 use Illuminate\Support\ServiceProvider;
 
@@ -43,6 +45,11 @@ class RepositoryProvider extends ServiceProvider
         $this->app->bind(
             ExpensesInterface::class,
             ExpensesRepository::class
+        );
+
+        $this->app->bind(
+            DashboardInterface::class,
+            DashboardRepository::class
         );
     }
 }
