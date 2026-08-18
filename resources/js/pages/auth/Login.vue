@@ -91,6 +91,7 @@ defineProps<{
             </div>
 
             <Button
+                variant="outline"
                 type="submit"
                 class="mt-4 w-full"
                 :tabindex="4"

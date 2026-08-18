@@ -337,6 +337,7 @@ const showRecurringFields = computed(() => selectedType.value === 'recurring');
             <div class="flex flex-col gap-2 sm:flex-row sm:justify-end">
                 <Button
                     type="submit"
+                    variant="outline"
                     class="w-full sm:w-auto"
                     :disabled="processing"
                 >

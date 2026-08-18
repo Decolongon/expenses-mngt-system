@@ -233,6 +233,7 @@ const selectedYear = ref<string>(
 
             <div class="flex flex-col gap-2 sm:flex-row sm:justify-end">
                 <Button
+                    variant="outline"
                     type="submit"
                     class="w-full sm:w-auto"
                     :disabled="processing"

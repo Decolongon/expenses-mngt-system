@@ -120,7 +120,7 @@ function textColor(color: string | null): string {
                             each month.
                         </CardDescription>
                     </div>
-                    <Button as-child>
+                    <Button variant="outline" as-child>
                         <Link :href="create.url()">Create Budget</Link>
                     </Button>
                 </div>

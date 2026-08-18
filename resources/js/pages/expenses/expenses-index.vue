@@ -122,7 +122,7 @@ function textColor(color: string | null): string {
                             Track how much you spend in each category.
                         </CardDescription>
                     </div>
-                    <Button as-child>
+                    <Button variant="outline" as-child>
                         <Link :href="create.url()">Create Expense</Link>
                     </Button>
                 </div>

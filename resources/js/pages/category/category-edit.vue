@@ -231,7 +231,7 @@ function previewAccent(): string {
             </Card>
 
             <div class="flex flex-col gap-2 sm:flex-row sm:justify-end">
-                <Button type="submit" class="w-full sm:w-auto">
+                <Button type="submit" class="w-full sm:w-auto" variant="outline">
                     Update Category
                 </Button>
             </div>

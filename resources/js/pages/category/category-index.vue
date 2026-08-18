@@ -75,7 +75,7 @@ const page = usePage();
                             Manage the categories used to organize your expenses.
                         </CardDescription>
                     </div>
-                    <Button as-child>
+                    <Button variant="outline" as-child>
                         <Link :href="create.url()">Create Category</Link>
                     </Button>
                 </div>
