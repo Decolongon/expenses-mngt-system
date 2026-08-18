@@ -1,0 +1,8 @@
+
+C:\laragon\www\expenses-mngt\resources\js\pages\Dashboard.vue
+  4:1  error  `@lucide/vue` import should occur before import of `vue`                                                                                    import/order
+  6:1  error  `@/actions/App/Http/Controllers/BudgetController` import should occur before import of `@/actions/App/Http/Controllers/ExpensesController`  import/order
+
+✖ 2 problems (2 errors, 0 warnings)
+  2 errors and 0 warnings potentially fixable with the `--fix` option.
+
