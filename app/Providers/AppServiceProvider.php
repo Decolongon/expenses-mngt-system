@@ -5,10 +5,13 @@ namespace App\Providers;
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\DevCommands;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
+use Inertia\Inertia;
+use Laravel\Fortify\Contracts\LogoutResponse;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
         $this->configureDefaults();
         $this->configDevCommand();
         $this->unknownOnFailConfig();
+        $this->configLogoutResponse();
     }
 
     /**
@@ -64,5 +68,20 @@ class AppServiceProvider extends ServiceProvider
     protected function unknownOnFailConfig(): void
     {
         FormRequest::failOnUnknownFields();
+    }
+
+    protected function configLogoutResponse()
+    {
+        $this->app->instance(LogoutResponse::class, new class implements LogoutResponse
+        {
+            public function toResponse($request)
+            {
+                Auth::logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+                Inertia::clearHistory();
+                return redirect()->intended(route('home'));
+            }
+        });
     }
 }
