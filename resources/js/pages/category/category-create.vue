@@ -2,7 +2,7 @@
 import { Head, Form } from '@inertiajs/vue3';
 import { Check, icons as lucideIcons } from '@lucide/vue';
 import { computed, ref } from 'vue';
-import { store, create } from "@/actions/App/Http/Controllers/CategoryController";
+import { store, create, index } from "@/actions/App/Http/Controllers/CategoryController";
 import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -12,6 +12,10 @@ import { Label } from '@/components/ui/label';
 defineOptions({
     layout: {
         breadcrumbs: [
+             {
+                title: 'Categories',
+                href: index(),
+            },
             {
                 title: 'Create category',
                 href: create(),

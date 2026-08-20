@@ -13,6 +13,10 @@ defineOptions({
     layout: {
         breadcrumbs: [
             {
+                title: 'Categories',
+                href: index(),
+            },
+            {
                 title: 'Update category',
                 href: index(),
             },
