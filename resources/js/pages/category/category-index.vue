@@ -76,7 +76,7 @@ const page = usePage();
                         </CardDescription>
                     </div>
                     <Button variant="outline" as-child>
-                        <Link :href="create.url()">Create Category</Link>
+                        <Link :href="create.url()" prefetch="click">Create Category</Link>
                     </Button>
                 </div>
             </CardHeader>
@@ -115,7 +115,7 @@ const page = usePage();
 <td class="px-4 py-3">
                                     <div class="flex items-center justify-end gap-2">
                                         <Button variant="outline" size="sm" as-child>
-                                            <Link :href="edit.url(category)">Edit</Link>
+                                            <Link :href="edit.url(category)" prefetch="click">Edit</Link>
                                         </Button>
 
                                         <Dialog>

@@ -193,7 +193,7 @@ const statCards = computed(() => [
                 </p>
             </div>
             <Button variant="outline" as-child>
-                <Link :href="createExpense.url()">Add expense</Link>
+                <Link :href="createExpense.url()" prefetch="click">Add expense</Link>
             </Button>
         </div>
 
