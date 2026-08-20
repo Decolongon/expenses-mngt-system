@@ -25,6 +25,10 @@ import {
 defineOptions({
     layout: {
         breadcrumbs: [
+             {
+                title: 'Budgets',
+                href: index(),
+            },
             {
                 title: 'Edit Budget',
                 href: index(),

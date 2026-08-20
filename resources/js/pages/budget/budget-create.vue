@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Head, Form } from '@inertiajs/vue3';
 import { ref } from 'vue';
-import { create, store } from '@/actions/App/Http/Controllers/BudgetController';
+import { create, store, index } from '@/actions/App/Http/Controllers/BudgetController';
 import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
 import {
@@ -25,6 +25,10 @@ import {
 defineOptions({
     layout: {
         breadcrumbs: [
+            {
+                title: 'Budgets',
+                href: index(),
+            },
             {
                 title: 'Create Budget',
                 href: create(),
