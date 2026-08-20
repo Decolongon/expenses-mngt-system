@@ -123,7 +123,7 @@ function textColor(color: string | null): string {
                         </CardDescription>
                     </div>
                     <Button variant="outline" as-child>
-                        <Link :href="create.url()">Create Expense</Link>
+                        <Link :href="create.url()" prefetch="click">Create Expense</Link>
                     </Button>
                 </div>
             </CardHeader>
@@ -226,7 +226,7 @@ function textColor(color: string | null): string {
                                             as-child
                                         >
                                             <Link :href="edit.url(expense)"
-                                                >Edit</Link
+                                                prefetch="click">Edit</Link
                                             >
                                         </Button>
 
