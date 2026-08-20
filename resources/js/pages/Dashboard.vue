@@ -192,7 +192,7 @@ const statCards = computed(() => [
                     Here's a quick look at your spending this month.
                 </p>
             </div>
-            <Button as-child>
+            <Button variant="outline" as-child>
                 <Link :href="createExpense.url()">Add expense</Link>
             </Button>
         </div>
