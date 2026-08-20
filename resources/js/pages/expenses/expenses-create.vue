@@ -4,6 +4,7 @@ import { computed, ref } from 'vue';
 import {
     create,
     store,
+    index
 } from '@/actions/App/Http/Controllers/ExpensesController';
 import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
@@ -29,6 +30,10 @@ import {
 defineOptions({
     layout: {
         breadcrumbs: [
+             {
+                title: 'Expenses',
+                href: index(),
+            },
             {
                 title: 'Create Expense',
                 href: create(),
