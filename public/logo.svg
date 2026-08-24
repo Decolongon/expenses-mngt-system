@@ -4,8 +4,13 @@
       <stop stop-color="#5AA9FF"/>
       <stop offset="1" stop-color="#1B62E8"/>
     </linearGradient>
+    <radialGradient id="sheen" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(148 118) rotate(58) scale(430)">
+      <stop stop-color="#FFFFFF" stop-opacity="0.26"/>
+      <stop offset="0.55" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
   </defs>
   <rect x="16" y="16" width="480" height="480" rx="116" fill="url(#tile)"/>
+  <rect x="16" y="16" width="480" height="480" rx="116" fill="url(#sheen)"/>
   <rect x="128" y="132" width="240" height="130" rx="30" fill="#FFFFFF"/>
   <rect x="112" y="196" width="272" height="212" rx="34" fill="#FFFFFF"/>
   <path d="M330 294c0-14.354 11.646-26 26-26h84c13.255 0 24 10.745 24 24v24c0 13.255-10.745 24-24 24h-84c-14.354 0-26-11.646-26-26v-20Z" fill="#FFFFFF"/>
